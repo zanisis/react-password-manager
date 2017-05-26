@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import {connect} from 'react-redux'
+
 import './App.css';
 
 import {BrowserRouter, Route} from 'react-router-dom'
+import {fetchPass} from './actions'
 
 import Main from './components/Main'
 
 class App extends Component {
+  componentDidMount(){
+    this.props.fetchListPass()
+  }
+
+
   render() {
     return (
       <BrowserRouter>
@@ -28,4 +35,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  fetchListPass : ()=> dispatch(fetchPass())
+})
+
+export default connect(null, mapDispatchToProps)(App);
