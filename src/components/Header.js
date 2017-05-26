@@ -107,7 +107,7 @@ class HeaderBar extends Component {
                   style={{width:'17rem'}}
                 />
                 <Input style={{marginLeft: 3, width:'14rem'}} icon={<Icon name={this.state.iconName} inverted circular link onClick={this.handleClickSearch}/>}
-                name="searchWord" placeholder='Search Fav Artist' onChange={this.handleInputSearchs}/>
+                name="searchWord" placeholder='Search By Username' onChange={this.handleInputSearchs}/>
               </Menu.Item>
             </Menu>
           </Segment>

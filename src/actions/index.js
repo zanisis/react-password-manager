@@ -23,3 +23,28 @@ export const savePassword = (data)=>{
     })
   })
 }
+
+export const deletePassword = (id)=>{
+  return dispatch =>
+  axios.delete('http://localhost:4000/password/'+id)
+  .then(response =>{
+    return dispatch({
+      type : DELETE_PASS,
+      payload : id
+    })
+  })
+}
+
+export const editPassword = (data)=>{
+  return dispatch =>
+  axios.patch('http://localhost:4000/password/'+data.id, {
+    username : data.username,
+    password : data.password,
+  })
+  .then(response => {
+    return dispatch({
+      type : EDIT_PASS,
+      payload : data
+    })
+  })
+}
