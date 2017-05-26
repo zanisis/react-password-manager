@@ -3,7 +3,7 @@ import { Segment, Input, Menu, Icon, Image, Button, Modal, Form, Popup } from 's
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 
-import {savePassword} from '../actions'
+import {savePassword, filterPass, fetchPass} from '../actions'
 
 
 import logo from '../logo.svg';
@@ -19,6 +19,16 @@ class HeaderBar extends Component {
       username:'',
       password:'',
     },
+  }
+
+  handleInputSearchs = (e)=> {
+    if(e.target.value === ''){
+      this.setState({iconName : 'search' })
+      this.props.fetchListPass()
+    } else {
+      this.setState({iconName: 'close', searchWord: e.target.value })
+      this.props.filterSearch(e.target.value)
+    }
   }
 
   handleChange(data){
@@ -92,7 +102,7 @@ class HeaderBar extends Component {
 
   render(){
     const { activeItem } = this.state
-    console.log(this.state.data);
+    // console.log(this.state);
     return(
         <div>
           <Segment inverted>
@@ -149,7 +159,9 @@ class HeaderBar extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  savePassword : data => dispatch(savePassword(data))
+  fetchListPass : ()=> dispatch(fetchPass()),
+  savePassword : data => dispatch(savePassword(data)),
+  filterSearch : data => dispatch(filterPass(data))
 })
 
 export default connect(null, mapDispatchToProps)(HeaderBar)

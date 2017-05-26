@@ -1,4 +1,4 @@
-import {FECTH_PASS, ADD_PASS, DELETE_PASS, EDIT_PASS} from '../constants'
+import {FECTH_PASS, ADD_PASS, DELETE_PASS, EDIT_PASS, SEARCH_PASS} from '../constants'
 import axios from 'axios'
 
 export const fetchPass = ()=>{
@@ -47,4 +47,20 @@ export const editPassword = (data)=>{
       payload : data
     })
   })
+}
+
+export const filterPass = (data)=>{
+return dispatch => {
+  axios.get('http://localhost:4000/password')
+  .then(response =>{
+    return dispatch({
+    type : SEARCH_PASS,
+    payload : {
+      search :data,
+      response : response.data
+      }
+    })
+  })
+
+  }
 }

@@ -9,3 +9,5 @@ export const DELETE_PASS = 'DELETE_PASS'
 
 //EDIT PASS
 export const EDIT_PASS = 'EDIT_PASS'
+
+export const SEARCH_PASS = 'SEARCH_PASS'
