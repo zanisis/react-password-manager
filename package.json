@@ -4,8 +4,12 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.1",
+    "chai": "^4.0.0",
+    "enzyme": "^2.8.2",
     "fetch": "^1.1.0",
+    "jsdom": "^11.0.0",
     "react": "^15.5.4",
+    "react-addons-test-utils": "^15.5.1",
     "react-dom": "^15.5.4",
     "react-logger": "^1.1.0",
     "react-redux": "^5.0.5",

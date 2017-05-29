@@ -6,7 +6,7 @@ import {deletePassword, editPassword} from '../actions'
 
 import Header from './Header'
 
-class MainBar extends Component {
+export class MainBar extends Component {
   state = {
     open: false,
     data : {
@@ -76,9 +76,10 @@ class MainBar extends Component {
   }
 
   render(){
-    console.log('dimain', this.state)
+    const { listPassword = [] } = this.props
     return(
       <div>
+        <h1>A</h1>
         <Header />
           <Table color='grey' inverted textAlign='center'>
             <Table.Header>
@@ -91,7 +92,7 @@ class MainBar extends Component {
             </Table.Header>
 
             <Table.Body>
-              {this.props.listPassword.map(data => (
+              { listPassword.map(data => (
                 <Table.Row key={data.id}>
                   <Table.Cell>{data.id}</Table.Cell>
                   <Table.Cell>{data.username}</Table.Cell>

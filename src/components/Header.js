@@ -9,7 +9,7 @@ import {savePassword, filterPass, fetchPass} from '../actions'
 import logo from '../logo.svg';
 import '../App.css';
 
-class HeaderBar extends Component {
+export class HeaderBar extends Component {
   state = {
     activeItem: 'home',
     iconName: 'search',
