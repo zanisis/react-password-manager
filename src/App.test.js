@@ -1,8 +1,9 @@
 import React from 'react';
 import {expect} from 'chai'
+
 import {App} from './App';
 import {MainBar} from './components/Main'
-import {Compku} from './components/Compku'
+
 import { Table } from 'semantic-ui-react'
 
 import Header from './components/Header'
@@ -19,22 +20,33 @@ import store from './store'
 
 
 describe('<Main />', ()=>{
-  it('have children of <header>', ()=>{
-    const wrapper = shallow(<MainBar store={store}  />)
-    expect(wrapper.containsAllMatchingElements([
-      <h1>A</h1>
-    ])).to.equal(true)
+  let wrapper
+  beforeEach(()=>{
+    wrapper = shallow(<MainBar store={store} />)
   })
 
   it('have check state on <Main />', ()=>{
-    const wrapper = shallow(<MainBar store={store} />)
-    console.log(wrapper.state());
     expect(wrapper.state().data).to.be.an('object')
   })
 
-  it('have check context', ()=>{
-    const wrapper = shallow(<MainBar store={store} />)
-    console.log(wrapper.context());
+  it('must be Component <MainBar />', ()=>{
+    const inst = wrapper.instance()
+    expect(inst).to.be.instanceOf(MainBar)
   })
-})
 
+  it('must run handleEdit', ()=>{
+    let data = {
+      id : 0,
+      username : 'zani',
+      password : 'admin'
+    }
+    wrapper.instance().handleEdit(data)
+    expect(wrapper.state().open).to.equal(true)
+  })
+
+  it('check listPassword', ()=>{
+    console.log(wrapper.instance().props.store.getState().passList)
+    expect(wrapper.instance().props.store.getState().passList).to.have.length(0)
+  })
+
+})

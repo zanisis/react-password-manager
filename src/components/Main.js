@@ -79,7 +79,6 @@ export class MainBar extends Component {
     const { listPassword = [] } = this.props
     return(
       <div>
-        <h1>A</h1>
         <Header />
           <Table color='grey' inverted textAlign='center'>
             <Table.Header>
